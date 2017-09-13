@@ -1,0 +1,18 @@
+{
+  "name": "mxdeploy",
+  "version": "1.0.0",
+  "description": "A control platform for deploying our code to our remote instances",
+  "main": "mxdeploy.js",
+  "bin": {
+    "mxdeploy": "cli.js"
+  },
+  "author": "Frank Camilleri",
+  "dependencies": {
+    "aws-sdk": "^2.98.0",
+    "mxaws": "github:massexchange/mxaws",
+    "minimist": "^1.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.6.1"
+  }
+}
