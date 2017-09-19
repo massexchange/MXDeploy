@@ -1,4 +1,5 @@
-const {mxCodeDeploy} = require("mxaws");
+const {mxCodeDeploy, mxaws} = require("mxaws");
+const {delay} = mxaws;
 
 exports.MXDeploy = async (app, group, inst, join) => {
 
@@ -45,6 +46,10 @@ exports.MXDeploy = async (app, group, inst, join) => {
 
     const thisDeployment =
         await mxCodeDeploy.deployDeploymentGroup(app, group, targetRevision);
+
+    //Wait 10 seconds so that AWS can finish creating the new deployment and start actually deploying it
+    //Else, enjoy a "DeploymentNotStartedException"
+    await delay(10);
 
     await mxCodeDeploy.waitForDeploymentSuccessful(thisDeployment)
         .catch(async err => {
