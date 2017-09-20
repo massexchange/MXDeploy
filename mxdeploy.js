@@ -62,7 +62,9 @@ exports.MXDeploy = async (app, group, inst, join) => {
 
             } else {
 
-                const errors = await mxCodeDeploy.getAndSimplifyDeploymentErrors(thisDeployment);
+                const errors = await mxCodeDeploy.getAndSimplifyDeploymentErrors(thisDeployment)
+                .catch(innerErr => console.log(`There was an error getting errors. Whoa. ${innerErr}`));
+
                 mxCodeDeploy.printSimplifiedDeploymentErrors(errors);
             }
 
