@@ -63,7 +63,10 @@ exports.MXDeploy = async (app, group, inst, join) => {
             } else {
 
                 const errors = await mxCodeDeploy.getAndSimplifyDeploymentErrors(thisDeployment)
-                .catch(innerErr => console.log(`There was an error getting errors. Whoa. ${innerErr}`));
+                .catch(innerErr => {
+                  console.log(`There was an error getting errors. This could be an IAM Role issue.`);
+                  console.log(innerErr);
+                });
 
                 mxCodeDeploy.printSimplifiedDeploymentErrors(errors);
             }
@@ -91,8 +94,8 @@ exports.checkIfDeploymentIsLatest = async (app, group, deploymentId) => {
         return false;
     });
     if (depGroupData == false) return false;
-    const {lastSuccessfulDeployment} = depGroupData.deploymentGroupInfo;
-    return (lastSuccessfulDeployment.deploymentId == deploymentId);
+    const {lastAttemptedDeployment} = depGroupData.deploymentGroupInfo;
+    return (lastAttemptedDeployment.deploymentId == deploymentId);
 };
 
 const determineEC2Filter = (app, group, inst) => inst
