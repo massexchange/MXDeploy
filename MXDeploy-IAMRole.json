@@ -1,0 +1,21 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "codedeploy:BatchGetDeploymentInstances",
+                "codedeploy:CreateDeployment",
+                "codedeploy:GetDeploymentGroup",
+                "codedeploy:GetDeploymentConfig",
+                "codedeploy:GetApplicationRevision",
+                "codedeploy:ListDeploymentInstances",
+                "codedeploy:UpdateDeploymentGroup",
+                "codedeploy:GetDeployment"
+            ],
+            "Resource": [
+                "*"
+            ]
+        }
+    ]
+}
