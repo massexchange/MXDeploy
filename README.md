@@ -29,6 +29,11 @@ To quote the great George Clinton -- "One fun at a time, that's all I'm sayin."*
     - `awsAccessKeyId`: the ID of the aws credential.
     - `awsSecretAccessKey`: the credential's key
     - `awsRegion`: the aws region being operated on.
+- Alternatively, if you want to deploy MXDeploy/something based on it to an Amazon EC2 instance for whatever reason,
+you can authenticate using IAM by creating a role with:
+    - AmazonEC2ReadOnlyAccess: for grabbing instance names when building deployment failure logs
+    - AmazonEC2RoleforAWSCodeDeploy: for accessing S3 buckets in a CodeDeploy Deployment
+    - In addition to these two managed AWS roles, an additional role must be created. A json for this role is included in this repo.
 - Run `npm link` to symlink the package to your installation of npm's `PATH` directory, making it invokable from your shell.
 
 #### Part 2: Set up some deployment groups.
